@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Chiroflex</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .top-bar {
+            background: #498582;
+            color: white;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .top-bar-left {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .translate-btn {
+            background: #ffa17a;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .translate-btn:hover {
+            background: #e08961;
+            transform: scale(1.05);
+        }
+        
+        nav {
+            padding: 20px 0;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #498582;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #2563eb;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #4b5563;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e2fffd 0%, #00aaa6 100%);
+            padding: 80px 0 120px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #00aaa6);
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        /* Introduction Section */
+        .intro-section {
+            background: linear-gradient(180deg, #00aaa6 0%, #66d9d6 50%, #e2fffd 100%);
+            padding: 80px 0 120px 0;
+            position: relative;
+        }
+        
+        .intro-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #e2fffd);
+        }
+        
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .intro-image {
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            animation: fadeInLeft 1s ease;
+        }
+        
+        .intro-content {
+            animation: fadeInRight 1s ease;
+        }
+        
+        .intro-content h2 {
+            font-size: 42px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 30px;
+        }
+        
+        .intro-content p {
+            font-size: 20px;
+            color: #1f2937;
+            line-height: 1.8;
+        }
+        
+        /* Services Section */
+        .services-section {
+            background: linear-gradient(180deg, #e2fffd 0%, #ccfbf1 50%, #99f6e4 100%);
+            padding: 80px 0 120px 0;
+            position: relative;
+        }
+        
+        .services-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #99f6e4);
+        }
+        
+        .services-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .services-content h2 {
+            font-size: 42px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 50px;
+        }
+        
+        .services-box {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            padding: 50px;
+        }
+        
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 15px 0;
+            padding-left: 15px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s;
+            margin-bottom: 10px;
+        }
+        
+        .service-item:hover {
+            padding-left: 25px;
+            border-left-color: #498582;
+        }
+        
+        .service-item i {
+            color: #00aaa6;
+            font-size: 22px;
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+        
+        .service-item span {
+            font-size: 18px;
+            color: #4b5563;
+        }
+        
+        /* Help Section */
+        .help-section {
+            background: linear-gradient(180deg, #99f6e4 0%, #ccfbf1 50%, #e2fffd 100%);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .help-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .help-content h2 {
+            font-size: 42px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 30px;
+        }
+        
+        .help-content p {
+            font-size: 22px;
+            color: #1f2937;
+            line-height: 1.8;
+            margin-bottom: 50px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: #ffa17a;
+            color: white;
+            border: 2px solid #ffa17a;
+        }
+        
+        .btn-primary:hover {
+            background: #e08961;
+            transform: scale(1.05);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+        }
+        
+        .btn-secondary:hover {
+            background: #f3f4f6;
+            transform: scale(1.05);
+        }
+        
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-brand h3 {
+            font-size: 28px;
+            color: #00aaa6;
+            margin-bottom: 15px;
+        }
+        
+        .footer-brand p {
+            color: #d1d5db;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: #9ca3af;
+            font-size: 22px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: white;
+        }
+        
+        .footer-section h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-section ul li a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 30px;
+            text-align: center;
+            color: #9ca3af;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #ffa17a;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            z-index: 999;
+            text-decoration: none;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            background: #e08961;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .intro-content h2,
+            .services-content h2,
+            .help-content h2 {
+                font-size: 32px;
+            }
+            
+            .intro-content p,
+            .help-content p {
+                font-size: 18px;
+            }
+            
+            .services-box {
+                padding: 30px 20px;
+            }
+            
+            .service-item span {
+                font-size: 16px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .top-bar-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="top-bar-left">
+                        <span><i class="fas fa-map-marker-alt"></i> 2 Locations</span>
+                        <span><i class="fas fa-phone"></i> (713) 461-0666</span>
+                    </div>
+                    <button class="translate-btn" onclick="toggleLanguage()">
+                        <i class="fas fa-language"></i>
+                        <span id="current-lang">EN</span>
+                        <span>/ ES</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">Chiroflex</div>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html">Services</a></li>
+                        <li><a href="#about" class="active">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 data-en="About Us" data-es="Nosotros">About Us</h1>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro-section">
+        <div class="container">
+            <div class="intro-grid">
+                <div>
+                    <figure>
+                        <img src="t.jpg" 
+                             alt="Medical assistant helping patient with physiotherapy exercises" 
+                             class="intro-image">
+                    </figure>
+                </div>
+                <div class="intro-content">
+                    <h2 data-en="Introduction" data-es="Introducción">Introduction</h2>
+                    <p data-en="At Chiroflex, we specialize in treating accident-related injuries, including auto, workplace, and commercial accidents. We pride ourselves on achieving rapid recoveries and providing professional, personalized care."
+                       data-es="En Chiroflex nos especializamos en el tratamiento de lesiones por accidentes, incluyendo automovilísticos, laborales y comerciales. Nos enorgullece lograr recuperaciones rápidas y ofrecer atención profesional y personalizada.">
+                        At Chiroflex, we specialize in treating accident-related injuries, including auto, workplace, and commercial accidents. We pride ourselves on achieving rapid recoveries and providing professional, personalized care.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="services-content">
+                <h2 data-en="Our Featured Services" data-es="Nuestros servicios destacados">Our Featured Services</h2>
+                
+                <div class="services-box">
+                    <div class="service-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-en="Free transportation from and to office" data-es="Transporte gratuito desde y hacia la oficina">Free transportation from and to office</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-en="Same-day appointments & immediate availability" data-es="Citas el mismo día y disponibilidad inmediata">Same-day appointments & immediate availability</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-en="Highly experienced team of accident doctors" data-es="Equipo altamente experimentado de médicos de accidentes">Highly experienced team of accident doctors</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-en="We work with your lawyer or recommend one if needed" data-es="Trabajamos con su abogado o recomendamos uno si es necesario">We work with your lawyer or recommend one if needed</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-en="We handle paperwork & all insurance matters" data-es="Manejamos el papeleo y todos los asuntos de seguro">We handle paperwork & all insurance matters</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-en="Advanced treatments & modern equipment" data-es="Tratamientos avanzados y equipo moderno">Advanced treatments & modern equipment</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-en="Specialized in accident injury treatments" data-es="Especializados en tratamientos de lesiones por accidentes">Specialized in accident injury treatments</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-en="Multidisciplinary team of doctors" data-es="Equipo multidisciplinario de médicos">Multidisciplinary team of doctors</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Section -->
+    <section class="help-section">
+        <div class="container">
+            <div class="help-content">
+                <h2 data-en="How We Can Help You" data-es="Cómo podemos ayudarte">How We Can Help You</h2>
+                <p data-en="Our team is ready to support you through car, workplace, or commercial accidents, providing efficient treatment and complete monitoring for your recovery."
+                   data-es="Nuestro equipo está listo para apoyarte en accidentes de carro, laborales o comerciales, ofreciendo un tratamiento eficiente y seguimiento completo para tu recuperación.">
+                    Our team is ready to support you through car, workplace, or commercial accidents, providing efficient treatment and complete monitoring for your recovery.
+                </p>
+                
+                <div class="cta-buttons">
+                    <a href="tel:7134610666" class="btn btn-primary">
+                        <i class="fas fa-phone"></i>
+                        <span data-en="Contact Us" data-es="Contáctanos">Call Now</span>
+                    </a>
+                    <a href="#services" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        <span data-en="Learn More" data-es="Saber Más">Learn More</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Chiroflex</h3>
+                    <p data-en="Reclaim Your Pain-Free Life: Swift Recovery After Any Accident!" data-es="Recupera Tu Vida Sin Dolor: ¡Recuperación Rápida Después de Cualquier Accidente!">Reclaim Your Pain-Free Life: Swift Recovery After Any Accident!</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/chiroflexhtx?igsh=Z2lxZ3B1c3A4bXdp"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/17134610666"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Features" data-es="Características">Features</h4>
+                    <ul>
+                        <li><a href="#" data-en="Accident Recovery" data-es="Recuperación de Accidentes">Accident Recovery</a></li>
+                        <li><a href="#" data-en="Appointment Booking" data-es="Reserva de Citas">Appointment Booking</a></li>
+                        <li><a href="#" data-en="Insurance Accepted" data-es="Seguros Aceptados">Insurance Accepted</a></li>
+                    </ul>
+                </div>
+                
+                
+                <div class="footer-section">
+                    <h4 data-en="Support" data-es="Soporte">Support</h4>
+                    <ul>
+                        <li><a href="#" data-en="Contact Us" data-es="Contáctenos">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Chiroflex. <span data-en="All rights reserved." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/17134610666" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Translation functionality
+        let currentLanguage = 'en';
+        
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
+            translatePage(currentLanguage);
+        }
+        
+        function translatePage(language) {
+            const elements = document.querySelectorAll('[data-en][data-es]');
+            elements.forEach(element => {
+                const text = element.getAttribute('data-' + language);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+            
+            document.getElementById('current-lang').textContent = language.toUpperCase();
+        }
+        
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Initialize translation
+        translatePage(currentLanguage);
+    </script>
+</body>
+</html>
